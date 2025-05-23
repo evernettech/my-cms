@@ -19,14 +19,14 @@
         <!-- Role -->
         <div class="mt-4">
             <x-input-label for="role_id" :value="__('Role')" />
-            <select id="role_id" name="role_id" class="block mt-1 w-full" required>
+            <x-select-input id="role_id" name="role_id" required>
                 <option value="">Select Role</option>
                 @foreach($roles as $role)
                     <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
                         {{ ucfirst($role->name) }}
                     </option>
                 @endforeach
-            </select>
+            </x-select-input>
             <x-input-error :messages="$errors->get('role_id')" class="mt-2" />
         </div>
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('content');
             $table->foreignId('subdomain_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

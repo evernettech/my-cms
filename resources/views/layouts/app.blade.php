@@ -10,13 +10,18 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body x-data="{ open: true }" 
+            x-bind:style="open ? 'margin-left: 50px; transition: margin-left 0.3s;' : 'margin-left: 50px; transition: margin-left 0.3s;'" 
+            class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
+            @include('components.sidebar')
 
             <!-- Page Heading -->
             @isset($header)
@@ -32,5 +37,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @livewireScripts
     </body>
 </html>

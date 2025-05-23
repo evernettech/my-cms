@@ -20,6 +20,50 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-dropdown align="right" width="32">
+                    <x-slot name="trigger">
+                        <button
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 whitespace-nowrap"
+
+                        >
+                            🌐 {{ app()->getLocale() === 'zh' ? '中文' : 'ENGLISH' }}
+                            <svg class="ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <x-dropdown-link
+                            :href="route('lang.switch', 'en')"
+                            :class="app()->getLocale() === 'en' ? 'font-bold bg-gray-100 leading-none' : 'leading-none'"
+                        >
+                            <div class="flex items-center whitespace-nowrap">
+                                🇺🇸 English
+                                @if(app()->getLocale() === 'en')
+                                    <span class="ml-1 text-indigo-600">✔</span>
+                                @endif
+                            </div>
+                        </x-dropdown-link>
+
+                        <x-dropdown-link
+                            :href="route('lang.switch', 'zh')"
+                            :class="app()->getLocale() === 'zh' ? 'font-bold bg-gray-100 leading-none' : 'leading-none'"
+                        >
+                            <div class="flex items-center whitespace-nowrap">
+                                🇨🇳 中文
+                                @if(app()->getLocale() === 'zh')
+                                    <span class="ml-1 text-indigo-600">✔</span>
+                                @endif
+                            </div>
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">

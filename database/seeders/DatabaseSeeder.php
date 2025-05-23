@@ -6,7 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Role;
+use App\Enums\RoleEnum;
 
 
 class DatabaseSeeder extends Seeder
@@ -16,22 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $operatorRole = Role::firstOrCreate(['name' => 'operator']);
 
-        User::factory()->create([
-            'name' => 'Admin',
+        // Create users
+        $admin = User::firstOrCreate([
             'email' => 'admin@example.com',
-            'password' => Hash::make('password123'), 
-            'role_id' => $adminRole->id,
+        ], [
+            'name' => 'Admin',
+            'password' => Hash::make('password123'),
         ]);
 
-        User::factory()->create([
-            'name' => 'Operator User',
+        $admin->assignRole(RoleEnum::ADMIN->value);
+
+        $operator = User::firstOrCreate([
             'email' => 'operator@example.com',
+        ], [
+            'name' => 'Operator User',
             'password' => Hash::make('password123'),
-            'role_id' => $operatorRole->id,
         ]);
+
+        $operator->assignRole(RoleEnum::OPERATOR->value);
     }
 }

@@ -1,13 +1,22 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-BZE5VnyZ.css",
+    "file": "assets/app-b5KYXtzx.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bf4POITK.js",
+    "file": "assets/app-T1DpEqax.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
+  },
+  "resources/js/tinymce-init.js": {
+    "file": "assets/tinymce-init-Dn0NTNsT.js",
+    "name": "tinymce-init",
+    "src": "resources/js/tinymce-init.js",
+    "isEntry": true,
+    "css": [
+      "assets/tinymce-init-DliJLEVM.css"
+    ]
   }
 }

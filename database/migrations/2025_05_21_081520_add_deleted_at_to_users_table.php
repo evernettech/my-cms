@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->foreignId('role_id')->nullable()->after('email_verified_at')->constrained();
+            $table->softDeletes('deleted_at')->after('updated_at')->nullable(); 
         });
     }
 
@@ -24,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropSoftDeletes();
         });
     }
 };
